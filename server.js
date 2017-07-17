@@ -28,7 +28,7 @@ server
           res.setHeader('Content-type', mime.lookup(path.join(__dirname, url)));
           fs.createReadStream(path.join(__dirname, url)).pipe(res);
         } else {
-          res.statusCode = 404;
+          res.statusCode = 204;
           res.end('not allowed');
         }
     }

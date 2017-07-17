@@ -15,10 +15,11 @@ server
     console.log(url);
     switch (url) {
       case '/api/v1/items':
-        const twoRandomNumbers = [Math.random(), Math.random()].map(randomNumber =>
-          pipe(multipleBy(10), plusRate(5), Math.floor)(randomNumber)
-        );
-        res.end(JSON.stringify(twoRandomNumbers));
+        const coordinates = {
+          width: pipe(multipleBy(10), plusRate(1), Math.floor)(Math.random()),
+          height: pipe(multipleBy(10), plusRate(5), Math.floor)(Math.random())
+        };
+        res.end(JSON.stringify(coordinates));
         break;
       case '/pictures':
         fs.createReadStream(path.join('index.html')).pipe(res);

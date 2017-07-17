@@ -22,8 +22,10 @@ server
         res.end(JSON.stringify(coordinates));
         break;
       case '/api/v1/pictures':
-        const filePath = path.join(__dirname, 'index.html');
-        fs.createReadStream(filePath).pipe(res);
+        const filePath = path.join(__dirname, 'static');
+        fs.readdir(filePath, (err, files) => {
+          res.end(JSON.stringify(files.map(file => `static/${file}`)));
+        });
         break;
       default:
         if (url.match(/\.(png|jpg)$/)) {

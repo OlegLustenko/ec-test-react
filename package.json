@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/OlegLustenko/ec-test-react.git"
   },
+  "engines": {
+    "node": "8.x.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

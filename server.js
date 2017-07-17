@@ -21,13 +21,25 @@ server
         };
         res.end(JSON.stringify(coordinates));
         break;
-      case '/pictures':
-        fs.createReadStream(path.join('index.html')).pipe(res);
+      case '/api/v1/pictures':
+        const filePath = path.join(__dirname, 'index.html');
+        fs.createReadStream(filePath).pipe(res);
         break;
       default:
-        if (url.includes('jpg') || url.includes('png')) {
-          res.setHeader('Content-type', mime.lookup(path.join(__dirname, url)));
-          fs.createReadStream(path.join(__dirname, url)).pipe(res);
+        if (url.match(/\.(png|jpg)$/)) {
+          const filePath = path.join(__dirname, url);
+          fs.stat(filePath, (error, stat) => {
+            if (error) {
+              res.statusCode = 404;
+              res.end('not found');
+              return;
+            }
+            res.writeHead(200, {
+              'Content-Type': mime.lookup(filePath),
+              'Content-Length': stat.size
+            });
+            fs.createReadStream(filePath).pipe(res);
+          });
         } else {
           res.statusCode = 204;
           res.end('not allowed');

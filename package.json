@@ -1,0 +1,24 @@
+{
+  "name": "ec-test-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegLustenko/ec-test-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlegLustenko/ec-test-react/issues"
+  },
+  "homepage": "https://github.com/OlegLustenko/ec-test-react#readme",
+  "dependencies": {
+    "mime": "^1.3.6"
+  }
+}

@@ -22,7 +22,7 @@ server
         res.end(JSON.stringify(coordinates));
         break;
       case '/api/v1/pictures':
-        const filePath = path.join(__dirname, 'static');
+        const filePath = path.resolve(__dirname, 'static');
         fs.readdir(filePath, (err, files) => {
           res.end(JSON.stringify(files.map(file => `static/${file}`)));
         });

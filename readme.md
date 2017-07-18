@@ -16,6 +16,8 @@
 
 ## Server endpoints
 
+url: https://ec-test-react.herokuapp.com/
+
 `GET /api/v1/items`
 
 Ответ:

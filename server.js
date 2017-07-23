@@ -19,10 +19,12 @@ server
           width: pipe(multipleBy(10), plusRate(1), Math.floor)(Math.random()),
           height: pipe(multipleBy(10), plusRate(5), Math.floor)(Math.random())
         };
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.end(JSON.stringify(coordinates));
         break;
       case '/api/v1/pictures':
         const filePath = path.resolve(__dirname, 'static');
+        res.setHeader('Access-Control-Allow-Origin', '*');
         fs.readdir(filePath, (err, files) => {
           res.end(JSON.stringify(files.map(file => `static/${file}`)));
         });

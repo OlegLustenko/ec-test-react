@@ -40,7 +40,7 @@ server
             }
             res.writeHead(200, {
               'Content-Type': mime.lookup(filePath),
-              'Content-Length': stat.size,
+              'Content-Length': `${stat.size}`,
               'Access-Control-Allow-Origin': '*'
             });
             fs.createReadStream(filePath).pipe(res);
@@ -51,7 +51,7 @@ server
         }
     }
   })
-  .listen(process.env.PORT || 3000, err => {
+  .listen(process.env.PORT || '3000', err => {
     if (err) console.log(err);
     console.log('server running at %s', process.env.PORT || 3000);
   });
